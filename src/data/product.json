@@ -1,0 +1,52 @@
+{
+  "products" :[
+    {
+      "proName": "Relief Sun Aqua-fresh : Rice + B5 100ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1723786814/7JWE7Lg7JWE7ZSE66CI7Ims.jpg",
+      "price": 16.2
+    },
+    {
+      "proName": "Revive Eye Serum : Ginseng + Retinal 30ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1656383787/7J247IK87JWE7J207YGs66a81743666660887aa85120fafa2.jpg",
+      "price": 15.3
+    },
+    {
+      "proName": "Red Bean Refreshing Pore Mask 140ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1667369578/pore174303780025883dc3286b80b.jpg",
+      "price": 18
+    },
+    {
+      "proName": "Glow Serum : Propolis + Niacinamide 30ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1603681412/6rSR7LGE7IS4658.jpg",
+      "price": 15.3
+    },
+    {
+      "proName": "Ginseng Essence Water 150ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1603684458/JSMS01TGfreegift174279861335191066c0e3383.jpg",
+      "price": 16.2
+    },
+    {
+      "proName": "Dynasty Cream 50ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1610336609/bojcream.jpg",
+      "price": 21.6
+    },
+    {
+      "proName": "Calming Serum : Green tea + Panthenol 30ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1661917795/64W57LCo7IS4658.jpg",
+      "price": 15.3
+    },
+    {
+      "proName": "Apricot Blossom Peeling Gel 100ml",
+      "image":
+        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1620633966/6r2D64u07ZWE66eB7KCk.jpg",
+      "price": 11.7
+    }
+  ]
+}
