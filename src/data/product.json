@@ -1,9 +1,8 @@
 {
   "products" :[
     {
-      "proName": "Relief Sun Aqua-fresh : Rice + B5 100ml",
-      "image":
-        "https://d2c3d01lcpw2ui.cloudfront.net/gl/data/item/1723786814/7JWE7Lg7JWE7ZSE66CI7Ims.jpg",
+      "proName": false,
+      "image": "",
       "price": 16.2
     },
     {

@@ -65,7 +65,7 @@ fetch("./src/data/product.json")
           <a href="#">
             <img
               class="p-8 rounded-t-lg aspect-square object-cover"
-              src=${product.image}
+              src=${product.image || "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="}
               alt="product image"
             />
           </a>
@@ -74,7 +74,7 @@ fetch("./src/data/product.json")
               <h5
                 class="tracking-tigh text-sm text-center text-gray-900 dark:text-white"
               >
-               ${product.proName}
+               ${product.proName || "Untitled Product"}
               </h5>
             </a>
             <div class="flex items-center justify-center mt-2.5 mb-5">
@@ -195,10 +195,10 @@ async function fetchProductsDisplay() {
     const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
     total.innerHTML = data.limit;
-    newIn.innerHTML = data.products.slice(1, 14).map(product => `<div
+    newIn.innerHTML = data.products.map(product => `<div
           class="w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
         >
-          <a href="#">
+          <a href="/detail.html?id=${product.id}">
             <img
               class="p-8 rounded-t-lg aspect-square object-cover"
               src=${product.images[0]}
