@@ -8,6 +8,7 @@ let sku = document.querySelector("#sku");
 let price = document.querySelector("#price");
 let desc = document.querySelector("#description");
 let loading = document.querySelector("#loading");
+const API_URL = "https://api.escuelajs.co/api/v1/products/"
 
 const fetchProductDetail = async () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -16,7 +17,7 @@ const fetchProductDetail = async () => {
 
   try {
     loading.style.display = "block";
-    const res = await fetch(`https://dummyjson.com/products/${productId}`);
+    const res = await fetch(`${API_URL}${productId}`);
     const data = await res.json();
     mainImage.src =
       data.images[0] ||
