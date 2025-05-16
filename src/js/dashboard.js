@@ -1,6 +1,12 @@
 "use strict";
-const API_URL = "https://api.escuelajs.co/api/v1/products/";
+const API_URL = "https://api.escuelajs.co/api/v1/";
+
 let tableBody = document.querySelector("#tableBody");
+let loading = document.querySelector("#loading");
+let categoriesOption = document.querySelector("#categories");
+let createProductForm = document.querySelector("#create-product");
+let successAlert = document.querySelector("#alert-3");
+let createProductButton = document.querySelector("#create-product-button");
 
 let selectedId;
 const setProductId = (id) => {
@@ -10,18 +16,26 @@ let data;
 
 async function fetchProductsDisplay() {
   try {
-    const response = await fetch(API_URL);
+    loading.style.display = "block";
+    const response = await fetch(`${API_URL}products/`);
     data = await response.json();
-    displayProducts()
+    displayProducts();
   } catch (error) {
     console.log(error);
+  } finally {
+    loading.style.display = "none";
   }
 }
 
 const displayProducts = () => {
- tableBody.innerHTML = data
-      .map(
-        (product) => `   <tr
+  tableBody.innerHTML = data
+    .map(
+      (product) => `  
+    <div
+        
+        >
+          <a href="./detail.html?id=${product.id}">
+       <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
                 <td class="p-4">
@@ -31,11 +45,13 @@ const displayProducts = () => {
                     alt="Apple Watch"
                   />
                 </td>
+
                 <td
                   class="px-6 py-4 font-semibold text-gray-900 dark:text-white"
                 >
                   ${product.title}
                 </td>
+                
                 <td class="px-6 py-4">
                   <div class="flex items-center">
                     <button
@@ -115,15 +131,76 @@ const displayProducts = () => {
                     </span></
                   >
                 </td>
-              </tr>`
-      )
-      .join("");
-}
+              </tr>
+              </a>
+              </div>
+             `
+    )
+    .join("");
+};
+
 
 const deleteProduct = (id) => {
   setProductId(id);
-  data = data?.filter(data => data.id !== id);
-  displayProducts()
+  data = data?.filter((data) => data.id !== id);
+  displayProducts();
 };
 
 fetchProductsDisplay();
+
+const fetchAllCategories = async () => {
+  const response = await fetch(`${API_URL}categories/`);
+  const categories = await response.json();
+  categoriesOption.innerHTML = categories.map(
+    (cat) => `
+   <option value=${cat.id}>${cat.name}</option>
+  `
+  );
+};
+
+fetchAllCategories();
+
+const createProduct = async (e) => {
+  e.preventDefault();
+  console.log("ho");
+  const title = document.querySelector("#title")?.value.trim();
+  const price = parseFloat(document.querySelector("#price")?.value);
+  const description = document.querySelector("#description")?.value.trim();
+  const category = parseInt(document.querySelector("#categories")?.value);
+  const image = document.querySelector("#image")?.value;
+
+  console.log("title", title);
+  console.log("price", price);
+  console.log("desc", description);
+  console.log("image:", image);
+
+  const productData = {
+    title,
+    price,
+    description,
+    categoryId: category,
+    images: [image],
+  };
+
+  try {
+    const response = await fetch(`${API_URL}products/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productData), // convert js object to json object
+    });
+
+    const result = await response.json();
+    if (result) {
+      successAlert.style.display = "flex";
+      setTimeout(() => {
+        successAlert.style.display = "none";
+      }, 3000);
+      fetchProductsDisplay();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+createProductForm.addEventListener("submit", createProduct);
